@@ -1,0 +1,24 @@
+Clear Route Cache
+
+php artisan route:cache
+----------------------------------------------------------------------
+Clear Cache Laravel Application
+
+php artisan cache:clear
+----------------------------------------------------------------------
+Laravel Clear Config Cache
+
+php artisan config:cache
+----------------------------------------------------------------------
+Clear View Cache Laravel
+
+php artisan view:clear
+----------------------------------------------------------------------
+Clear View cache:
+
+php artisan view:clear
+-----------------------------------
+
+Reoptimized Class
+
+php artisan optimize
