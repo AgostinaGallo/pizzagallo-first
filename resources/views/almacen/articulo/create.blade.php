@@ -36,7 +36,7 @@
 	
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
-                <label for="codigo">Código barras (4 dígitos)</label>
+                <label for="codigo">Código Artículo</label>
                 <input type="text" name="codigo" required value="{{old('codigo')}}" class="form-control" placeholder="Codigo del articulo...">
             </div>
 		</div>   

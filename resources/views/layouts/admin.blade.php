@@ -120,6 +120,17 @@
                 <li><a href="{{url('ventas/cliente')}}"><i class="fa fa-circle-o"></i> Clientes</a></li>
               </ul>
             </li>
+
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-dollar"></i>
+                <span>Caja</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{url('caja')}}"><i class="fa fa-circle-o"></i> Caja - Informe</a></li>
+              </ul>
+            </li>
                        
             <li class="treeview">
               <a href="#">
@@ -196,7 +207,7 @@
       <!--Fin-Contenido-->
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
-          <b>Version</b> Septiembre 2020
+          <b>Año</b> <script>document.write(new Date().getFullYear())</script>
         </div>
         <strong>Copyright: Agostina Melania Gallo </strong> Todos los derechos reservados.
       </footer>
