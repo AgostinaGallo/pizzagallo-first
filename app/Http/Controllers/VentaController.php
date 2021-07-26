@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect; // Redirecciones
 use Illuminate\Support\Facades\Input; // Inputs
 use pizzagallo\Http\Requests\VentaFormRequest; // Request/validacion de venta
 use pizzagallo\Venta; # Modelo  Venta
+use pizzagallo\Articulo; # Modelo  Venta
 use pizzagallo\DetalleVenta; # Modelo  DetalleVenta
 use DB; # Funciones de Bases de Datos
 
@@ -51,9 +52,8 @@ class VentaController extends Controller
 
 		// Consulta tabla articulo
 		$articulos=DB::table('articulo as art')
-			// (Para mostrar) concateno el codigo con nombre de articulo
 			// INNER JOIN para traer los articulos comprados en detalle_ingreso
-			->join('detalle_ingreso as di','art.idarticulo','=','art.idarticulo') // !!!! ESTO AGREGUE para que me muestre articulos que NO estan en INGRESO(no comprados), antiguo codigo: ->join('detalle_ingreso as di','art.idarticulo','=','di.idarticulo')
+			->leftJoin('detalle_ingreso as di','art.idarticulo','=','di.idarticulo') // !!!! ESTO AGREGUE para que me muestre articulos que NO estan en INGRESO(no comprados), antiguo codigo: ->join('detalle_ingreso as di','art.idarticulo','=','di.idarticulo')
 			->join('categoria as c','art.idcategoria','=','c.idcategoria')
 			// Promedio todos los precios de venta para establecer 1 precio.
 			->select(DB::raw('CONCAT(art.codigo, " ", art.nombre) AS articulo'), 'art.idarticulo', 'art.stock',DB::raw('avg(di.precio_venta) as precio_promedio'))
@@ -109,6 +109,9 @@ class VentaController extends Controller
 				$detalle->precio_venta = $precio_venta[$cont];
 				$detalle->save();
 				$cont=$cont+1;
+
+				$articulo = Articulo::find($detalle->idarticulo); 
+				$articulo->decrement('stock', $detalle->cantidad);
 			}
 
 			DB::commit();
