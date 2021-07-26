@@ -28,6 +28,7 @@ Route::resource('compras/ingreso', 'IngresoController');
 
 Route::resource('ventas/venta', 'VentaController');
 
+Route::resource('caja', 'CajaController');
 /* 
 Route::resource('ventas/venta', 'VentaController');
 Route::resource('seguridad/usuario', 'UsuarioController');
