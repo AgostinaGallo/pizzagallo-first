@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Input; // Inputs
 use pizzagallo\Http\Requests\PersonaFormRequest; // Request/Validacione Persona
 use pizzagallo\Http\Requests\IngresoFormRequest; // Request/Validacione Ingreso
 use pizzagallo\Ingreso; // Modelo Ingreso de app/
+use pizzagallo\Articulo; // Modelo Articulo de app/
 use pizzagallo\DetalleIngreso; // Modelo DetalleIngreso de app/
 use DB; // Funciones de Bases de Datos
 
@@ -33,7 +34,7 @@ class IngresoController extends Controller
 			$ingresos=DB::table('ingreso as i')
 			->join('persona as p', 'i.idproveedor','=','p.idpersona')
 			->join('detalle_ingreso as di','i.idingreso','=','di.idingreso')
-			->select('i.idingreso','i.fecha_hora','p.nombre','i.tipo_comprobante','i.serie_comprobante','i.num_comprobante','i.impuesto','i.estado',DB::raw('sum(di.cantidad*precio_compra) as total'))
+			->select('i.idingreso','i.fecha_hora','p.nombre','i.tipo_comprobante','i.serie_comprobante','i.num_comprobante','i.impuesto','i.estado', 'i.total_ingreso') // DB::raw('sum(di.cantidad*precio_compra) as total')
 			->where('i.num_comprobante','LIKE','%'.$query.'%') // busco por numero de comprobante
 			->orderBy('i.idingreso','desc') // ordeno descendiente por idingreso (MAS NUEVO AL MAS VIEJO)
 			// agrupo los campos mismos del select
@@ -69,6 +70,7 @@ class IngresoController extends Controller
 			$ingreso->tipo_comprobante=$request->get('tipo_comprobante');
 			$ingreso->serie_comprobante=$request->get('serie_comprobante');
 			$ingreso->num_comprobante=$request->get('num_comprobante');
+			$ingreso->total_ingreso=$request->get('total_ingreso');
 			// Clase carbon zona horaria de mi ubicacion
 			$mytime = Carbon::now('America/Argentina/Buenos_Aires');
 			$ingreso->fecha_hora=$mytime->toDateTimeString();
@@ -95,7 +97,11 @@ class IngresoController extends Controller
 				$detalle->precio_venta = $precio_venta[$cont];
 				$detalle->save();
 				$cont=$cont+1;
+
+				$articulo = Articulo::find($detalle->idarticulo); 
+				$articulo->increment('stock', $detalle->cantidad);
 			}
+
 			DB::commit();
 
 		}catch(\Exception $e)
@@ -113,7 +119,7 @@ class IngresoController extends Controller
 		$ingreso=DB::table('ingreso as i')
 			->join('persona as p', 'i.idproveedor','=','p.idpersona')
 			->join('detalle_ingreso as di','i.idingreso','=','di.idingreso')
-			->select('i.idingreso','i.fecha_hora','p.nombre','i.tipo_comprobante','i.serie_comprobante','i.num_comprobante','i.impuesto','i.estado',DB::raw('sum(di.cantidad*precio_compra) as total'))
+			->select('i.idingreso','i.fecha_hora','p.nombre','i.tipo_comprobante','i.serie_comprobante','i.num_comprobante','i.impuesto','i.estado', 'i.total_ingreso')// DB::raw('sum(di.cantidad*precio_compra) as total')
 			// busco el ingreso en especifico
 			->where('i.idingreso','=',$id)
 			->first(); // el primer dato que encuentre con el where

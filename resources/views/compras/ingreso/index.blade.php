@@ -43,7 +43,7 @@
                     <td> {{$ing->serie_comprobante }} </td>
                     <td> {{ $ing->num_comprobante }} </td>
                     <td> {{ $ing->impuesto }} </td>
-                    <td> {{ $ing->total }} </td>
+                    <td> {{ $ing->total_ingreso }} </td>
                     <td> {{ $ing->estado }} </td>
                     <td> 
                         <a href="{{URL::action('IngresoController@show',$ing->idingreso)}}"><button class="btn btn-primary">Detalles</button></a>

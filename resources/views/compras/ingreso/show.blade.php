@@ -50,7 +50,7 @@
                                 <th></th>
                                 <th></th>
                                 {{-- total de ingreso, total del select en show() <-IngresoController --}}
-                                <th><h4 id="total">{{$ingreso->total}}</h4></th>
+                                <th><h4 id="total">{{$ingreso->total_ingreso}}</h4></th>
                             </tfoot>
                             <tbody>
                                 {{-- <tr> multiple dependiendo los detalles que tendrá el Ingreso

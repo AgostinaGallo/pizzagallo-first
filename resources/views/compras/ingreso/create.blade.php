@@ -129,7 +129,7 @@
                                 <th></th>
                                 <th></th>
                                 <th></th>
-                                <th><h4 id="total">$ 0.00</h4></th>
+                                <th><h4 id="total">$ 0.00</h4> <input type="hidden" name="total_ingreso" id="total_ingreso"></th>
                             </tfoot>
                             <tbody>
 
@@ -187,6 +187,7 @@
             cont++;
             limpiar();
             $("#total").html("$ " + total);
+            $("#total_ingreso").val(total);
             evaluar();
             // AGREGO LA FILA DE LA TABLA id=detalles
             $('#detalles').append(fila);
@@ -224,6 +225,7 @@
     function eliminar(index){
         total = total - subtotal[index];
         $("#total").html("$ " + total);
+        $("#total_ingreso").val(total);
         $("#fila" + index).remove();
         evaluar();
         
