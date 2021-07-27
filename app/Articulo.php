@@ -17,6 +17,7 @@ class Articulo extends Model
         'codigo',
         'nombre',
         'stock',
+        'unidad_medida',
         'descripcion',
         'imagen',
         'estado'

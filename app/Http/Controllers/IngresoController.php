@@ -50,7 +50,7 @@ class IngresoController extends Controller
 		// consulta tabla articulo
 		$articulos=DB::table('articulo as art')
 			// (Para mostrar) concateno el codigo con nombre de articulo
-			->select(DB::raw('CONCAT(art.codigo, " ", art.nombre) AS articulo'), 'art.idarticulo')
+			->select(DB::raw('CONCAT(art.codigo, " ", art.nombre, " (", art.unidad_medida, ")") AS articulo'), 'art.idarticulo')
 			// donde el articulo a mostrar este activo
 			->where('art.estado','=','Activo')
 			->get();
@@ -94,7 +94,7 @@ class IngresoController extends Controller
 				$detalle->idarticulo = $idarticulo[$cont];
 				$detalle->cantidad = $cantidad[$cont];
 				$detalle->precio_compra = $precio_compra[$cont];
-				$detalle->precio_venta = $precio_venta[$cont];
+				$detalle->precio_venta = isset($precio_venta[$cont])? $precio_venta[$cont]: null;
 				$detalle->save();
 				$cont=$cont+1;
 

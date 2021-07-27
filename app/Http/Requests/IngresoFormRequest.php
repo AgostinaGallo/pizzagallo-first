@@ -32,7 +32,6 @@ class IngresoFormRequest extends Request
             'idarticulo'=>'required',
             'cantidad'=>'required',
             'precio_compra'=>'required',
-            'precio_venta'=>'required',
             'total_ingreso'=>'required'
         ];
     }

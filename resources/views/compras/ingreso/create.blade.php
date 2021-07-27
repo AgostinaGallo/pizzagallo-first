@@ -29,7 +29,7 @@
         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
             <div class="form-group">
                 <label for="proveedor">Proveedor</label>
-                <select name="idproveedor" id="idproveedor" class="form-control selectpicker" id="pidarticulo" data-live-search="true">
+                <select name="idproveedor" id="idproveedor" class="form-control selectpicker" id="pidarticulo" data-live-search="true" required>
                     {{--$personas recibo del return create() del controlador--}}
                     @foreach($personas as $persona)
                     <option value="{{$persona->idpersona}}">{{$persona->nombre}}</option> 
@@ -93,7 +93,7 @@
                     <div class="form-group">
                         <label for="precio_compra">Precio Compra</label>
                         {{-- pprecio_compra = p adelante porque es auxiliar --}}
-                        <input type="number" name="pprecio_compra" id="pprecio_compra" class="form-control" placeholder="0.00">
+                        <input type="number" name="pprecio_compra" id="pprecio_compra" class="form-control" min="0" placeholder="0.00">
                     </div>
                 </div>
                 {{-- PRECIO VENTA --}}
@@ -105,10 +105,10 @@
                     </div>
                 </div>   
                 {{-- Boton AGREGAR DETALLES --}}
-                <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12">
+                <div class="col-lg-2 col-sm-2 col-md-2 col-xs-12 justify-content-center align-items-center">
                     <div class="form-group">
                         {{-- bt_add usado en javascript para capturar su click--}}
-                        <button type="button" id="bt_add" class="btn btn-primary">Agregar</button>
+                        <button type="button" id="bt_add" class="btn btn-primary">+ Agregar</button>
                     </div>
                 </div> 
                 {{-- Tabla de DETALLES agregados --}}
@@ -178,7 +178,7 @@
         precio_venta = $("#pprecio_venta").val();
         
         // valido
-        if (idarticulo !="" && cantidad !="" && cantidad>0 && precio_compra !="" && precio_venta!="")
+        if (idarticulo !="" && cantidad !="" && cantidad>0 && precio_compra !="")
         {
             subtotal[cont]= (cantidad*precio_compra);
             total= total+subtotal[cont];

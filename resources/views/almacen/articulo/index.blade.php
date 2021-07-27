@@ -46,7 +46,11 @@
                     <td> {{ $art->descripcion }} </td>
 
                     <td>{{-- llamo con asset a la imagen almacenada en la ruta | muestro texto alternativo con nombre si hubiese un error para mostrar imagen--}}
+                        @if(isset($art->imagen))
                         <img src="{{asset('imagenes/articulos/'.$art->imagen)}}" alt="{{ $art->nombre }}" height="100px" width="100px" class="img-thumbnail"> 
+                        @else 
+                          
+                        @endif
                     </td>
                     
 					<td> {{ $art->estado }} </td>

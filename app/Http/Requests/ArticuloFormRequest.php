@@ -27,9 +27,10 @@ class ArticuloFormRequest extends Request
             'idcategoria'=>'required',
             'codigo'=>'required|max:50',
             'nombre'=>'required|max:100',
-            'stock'=>'numeric',
-            'descripcion'=>'max:512',
-            'imagen'=>'mimes:jpeg,bmp,png'
+            'stock'=>'required|numeric|min:0',
+            'unidad_medida'=>'required|string',
+            'descripcion'=>'nullable|max:512',
+            'imagen'=>'nullable|mimes:jpeg,bmp,png'
         ];
     }
 }

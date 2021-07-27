@@ -56,7 +56,7 @@ class VentaController extends Controller
 			->leftJoin('detalle_ingreso as di','art.idarticulo','=','di.idarticulo') // !!!! ESTO AGREGUE para que me muestre articulos que NO estan en INGRESO(no comprados), antiguo codigo: ->join('detalle_ingreso as di','art.idarticulo','=','di.idarticulo')
 			->join('categoria as c','art.idcategoria','=','c.idcategoria')
 			// Promedio todos los precios de venta para establecer 1 precio.
-			->select(DB::raw('CONCAT(art.codigo, " ", art.nombre) AS articulo'), 'art.idarticulo', 'art.stock',DB::raw('avg(di.precio_venta) as precio_promedio'))
+			->select(DB::raw('CONCAT(art.codigo, " ", art.nombre, " (", art.unidad_medida, ")") AS articulo'), 'art.idarticulo', 'art.stock',DB::raw('avg(di.precio_venta) as precio_promedio'))
 			->where('c.nombre','!=', 'Insumos') // El articulo a vender NO PUEDE ser tipo Insumo 
 			->where('art.estado','=','Activo') // El articulo debe ser activo
 			->where('art.stock','>','0') // El stock debe existir
