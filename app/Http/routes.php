@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     // return view('welcome'); 
-    return view('layouts/admin');
+    return view('auth/login');
 });
 
 // tipo resource para peticions CRUD
@@ -29,6 +29,8 @@ Route::resource('compras/ingreso', 'IngresoController');
 Route::resource('ventas/venta', 'VentaController');
 
 Route::resource('caja', 'CajaController');
+
+Route::resource('seguridad/usuario', 'UsuarioController');
 /* 
 Route::resource('ventas/venta', 'VentaController');
 Route::resource('seguridad/usuario', 'UsuarioController');
@@ -43,3 +45,10 @@ Route::get('/{slug?}', 'HomeController@index');
 Route::auth();
 
 Route::get('/home', 'HomeController@index');*/
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+
+// Si la ruta buscada no existe
+Route::get('/{slug?}', 'HomeController@index');

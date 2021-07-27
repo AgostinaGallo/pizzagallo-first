@@ -29,9 +29,14 @@
         <!-- Logo -->
         <a href="#" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>PG</b></span>
+          <span class="logo-mini">            
+            <img src="{{asset('imagenes/logopizza.png')}}" alt="Logo" height="30px" width="auto"  style="left: 20px;    margin-top: -10px;">
+          </span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>PizzaGallo</b></span>
+          <span class="logo-lg">                    
+            <img src="{{asset('imagenes/logopizza.png')}}" alt="Logo" height="30px" width="auto"  style="left: 20px;    margin-top: -10px;">
+            <b>PizzaGallo</b>
+          </span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -49,7 +54,7 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <small class="bg-red">Online</small>
-                  <span class="hidden-xs">Agostina Gallo</span>
+                  <span class="hidden-xs"> {{ Auth::user()->name }}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
@@ -59,7 +64,7 @@
                   <!-- Menu Footer-->
                   <li class="user-footer">            
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Cerrar</a>
+                      <a href="{{ url('/logout') }}" class="btn btn-default btn-flat"><i class="fa fa-btn fa-sign-out"></i>Cerrar Sesión</a>
                     </div>
                   </li>
                 </ul>
@@ -78,16 +83,10 @@
           <ul class="sidebar-menu">
             <li class="header"></li>
             
-            <!-- <li>
-              <a href="{{url('pedidos/pedido')}}">
-                <i class="fa fa-pencil-square-o"></i>
-                <span>Pedidos(trabajando)</span>
-              </a>
-            </li> -->
-      
+     
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-laptop"></i>
+                <i class="fa fa-archive"></i>
                 <span>Almacén</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
@@ -100,7 +99,7 @@
             
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-archive"></i>
+                <i class="fa fa-tags"></i>
                 <span>Compras</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
@@ -134,7 +133,7 @@
                        
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-folder"></i> <span>Acceso</span>
+                <i class="fa fa-lock"></i> <span>Seguridad</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
@@ -142,18 +141,7 @@
                 
               </ul>
             </li>
-             <li>
-              <a href="#">
-                <i class="fa fa-plus-square"></i> <span>Ayuda</span>
-                <small class="label pull-right bg-red">PDF</small>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa fa-info-circle"></i> <span>Acerca De...</span>
-                <small class="label pull-right bg-yellow">IT</small>
-              </a>
-            </li>
+    
                         
           </ul>
         </section>
