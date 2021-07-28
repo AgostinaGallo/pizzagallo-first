@@ -53,18 +53,14 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <small class="bg-red">Online</small>
+                  <small class="bg-green">Online</small>
                   <span class="hidden-xs"> {{ Auth::user()->name }}</span>
                 </a>
-                <ul class="dropdown-menu">
-                  <!-- User image -->
-                  <li class="user-header">
-
-                  </li>              
+                <ul class="dropdown-menu">           
                   <!-- Menu Footer-->
                   <li class="user-footer">            
                     <div class="pull-right">
-                      <a href="{{ url('/logout') }}" class="btn btn-default btn-flat"><i class="fa fa-btn fa-sign-out"></i>Cerrar Sesión</a>
+                      <a href="{{ url('/logout') }}" class="btn btn-danger btn-flat"><i class="fa fa-btn fa-sign-out"></i>Cerrar Sesión</a>
                     </div>
                   </li>
                 </ul>

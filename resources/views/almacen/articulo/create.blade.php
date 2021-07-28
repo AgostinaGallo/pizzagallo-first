@@ -62,7 +62,7 @@
                     <option selected>Elegir...</option>
                     <option value="unidades">Unidades</option>
                     <option value="gramos">Gramos</option>
-                    <option value="gramos">Kilogramos</option>
+                    <option value="kilogramos">Kilogramos</option>
                     <option value="litros">Litros</option>
                 </select>
             </div>
@@ -96,7 +96,7 @@
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
                 <button class="btn btn-primary" type="submit">Guardar</button>
-                <button class="btn btn-danger" type="reset">Cancelar</button>
+                <a class="btn btn-danger" href="{{ url()->previous() }}">Cancelar</a>
             </div>
 		</div>
 		

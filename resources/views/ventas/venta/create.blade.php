@@ -157,7 +157,7 @@
                 {{-- Token permite trabajar con transacciones (desde el controlador) --}}
                 <input name="_token" value="{{ csrf_token() }}" type="hidden"></input>
                 <button class="btn btn-primary" type="submit">Guardar</button>
-                <button class="btn btn-danger" type="reset">Cancelar</button>
+                <a class="btn btn-danger" href="{{ url()->previous() }}">Cancelar</a>
             </div>
         </div>
     </div>

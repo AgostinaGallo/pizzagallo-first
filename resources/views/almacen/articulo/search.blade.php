@@ -7,7 +7,7 @@
 
     <div class="input-group">
 
-        <input type="text" class="form-control" name="searchText" placeholder="Buscar.." value="{{$searchText}}">
+        <input type="text" class="form-control" name="searchText" placeholder="Buscar por Nombre o Código.." value="{{$searchText}}">
     
         <span class="input-group-btn"> {{-- El boton al costado de la caja de texto --}}
             
